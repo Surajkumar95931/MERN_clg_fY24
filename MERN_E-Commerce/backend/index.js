@@ -82,13 +82,11 @@ const Product = mongoose.model("product", {
   },
 });
 
-app.post("/addproduct", async (req, res) => {
-  
-});
+app.post("/addproduct", async (req, res) => {});
 
 app.listen(port, (error) => {
   if (!error) {
-    console.log("Server running on port" + port);
+    console.log("Server running on port " + port);
   } else {
     console.log("Error:" + error);
   }
