@@ -1,10 +1,12 @@
 import React from 'react'
+import Navbar from './Components/Navbar/Navbar'
+import Admin from './Pages/Admin/Admin'
 
 const App = () => {
   return (
     <div>
-      <h1>hello</h1>
-      <>asdfghjkjhgfdsdfghjkjhgfdsdfghjkjhgfdsdfghjhgfd</>
+      <Navbar/>
+      <Admin/>
     </div>
   )
 }
