@@ -15,14 +15,12 @@ const ShopContextprovider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   useEffect(() => {
-    // fetch("http://localhost:4000/allproducts")
-    fetch("https://gentle-boa-frock.cyclic.app/allproducts")
+    fetch("http://localhost:4000/allproducts")
       .then((response) => response.json())
       .then((data) => setAll_Product(data));
 
     if (localStorage.getItem("auth-token")) {
-      // fetch("http://localhost:4000/getcart", {
-      fetch("https://gentle-boa-frock.cyclic.app/getcart", {
+      fetch("http://localhost:4000/getcart", {
         method: "POST",
         headers: {
           Accept: "Application/form-data",
@@ -41,8 +39,7 @@ const ShopContextprovider = (props) => {
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if (localStorage.getItem("auth-token")) {
-      // fetch("http://localhost:4000/addtocart", {
-      fetch("https://gentle-boa-frock.cyclic.app/addtocart", {
+      fetch("http://localhost:4000/addtocart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -59,8 +56,7 @@ const ShopContextprovider = (props) => {
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (localStorage.getItem("auth-token")) {
-      // fetch("http://localhost:4000/removefromcart", {
-      fetch("https://gentle-boa-frock.cyclic.app/removefromcart", {
+      fetch("http://localhost:4000/removefromcart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",
