@@ -15,12 +15,14 @@ const ShopContextprovider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   useEffect(() => {
-    fetch("http://localhost:4000/allproducts")
+    // fetch("http://localhost:4000/allproducts")
+    fetch("https://gentle-boa-frock.cyclic.app/allproducts")
       .then((response) => response.json())
       .then((data) => setAll_Product(data));
 
     if (localStorage.getItem("auth-token")) {
-      fetch("http://localhost:4000/getcart", {
+      // fetch("http://localhost:4000/getcart", {
+      fetch("https://gentle-boa-frock.cyclic.app/getcart", {
         method: "POST",
         headers: {
           Accept: "Application/form-data",
@@ -39,7 +41,8 @@ const ShopContextprovider = (props) => {
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("http://localhost:4000/addtocart", {
+      // fetch("http://localhost:4000/addtocart", {
+      fetch("https://gentle-boa-frock.cyclic.app/addtocart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -56,13 +59,14 @@ const ShopContextprovider = (props) => {
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("http://localhost:4000/removefromcart", {
+      // fetch("http://localhost:4000/removefromcart", {
+      fetch("https://gentle-boa-frock.cyclic.app/removefromcart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",
           "auth-token": `${localStorage.getItem("auth-token")}`,
           "Content-Type": "application/json",
-        }, 
+        },
         body: JSON.stringify({ itemId: itemId }),
       })
         .then((response) => response.json())
@@ -74,7 +78,9 @@ const ShopContextprovider = (props) => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let itemInfo = all_product.find((product) => product.id === Number(item));
+        let itemInfo = all_product.find(
+          (product) => product.id === Number(item)
+        );
         totalAmount += itemInfo.new_price * cartItems[item];
       }
     }
