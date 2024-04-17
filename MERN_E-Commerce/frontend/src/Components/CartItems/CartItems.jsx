@@ -63,7 +63,7 @@ const CartItems = () => {
               <h3>₹{getTotalCartAmount()}</h3>
             </div>
           </div>
-          <button>PROCEED TO CHECKOUT</button>
+          <button>PROCEED to CHECKOUT</button>
         </div>
         <div className="cartitems-promocode">
           <p>if you have a promocode enter here</p>
